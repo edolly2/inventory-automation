@@ -1,5 +1,4 @@
 // src/pages/OrdersPage.jsx
-import React from "react";
 import DataTable from "../components/ui/DataTable";
 
 const OrdersPage = () => {
@@ -11,7 +10,7 @@ const OrdersPage = () => {
       </div>
       <div className="card">
         {/* <h3 className="card-header">Pending Orders</h3> */}
-        {/* <div className="card-nav">
+        <div className="card-nav">
           <ul className="card-nav-list">
             <li>
               <button>Pending Orders</button>
@@ -26,9 +25,8 @@ const OrdersPage = () => {
               <button>Delayed Orders</button>
             </li>
           </ul>
-
-        </div> */}
-        <DataTable />
+        </div>
+        {/* <DataTable /> */}
       </div>
     </div>
   );
