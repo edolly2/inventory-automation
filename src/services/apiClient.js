@@ -35,5 +35,11 @@ export async function fetchDashboardData(clientId /*token*/) {
     },
     trends: config.mockData.trends,
     topProducts: config.mockData.topProducts,
+    orders: {
+      pendingOrders: config.mockData.pendingOrders,
+      shippedOrders: config.mockData.shippedOrders,
+      delayedOrders: config.mockData.delayedOrders,
+      deliveredOrders: config.mockData.deliveredOrders,
+    },
   };
 }

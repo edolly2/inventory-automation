@@ -39,6 +39,12 @@ body {
   color: var(--text-main);
 }
 
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 /* UTILITY CLASSES */
 .centered {
   min-height: calc(100vh - 80px);
@@ -240,6 +246,30 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.card-nav {
+  /* width: 50%; */
+  background-color: #e2e8f0;
+  /* display: flex; */
+}
+
+.card-nav-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.card-nav-list li {
+  /* flex: 1; */
+  text-align: center;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
 .metric-card {
   display: flex;
   flex-direction: column;
@@ -329,7 +359,7 @@ body {
 
 /* BUTTONS */
 .btn {
-  border-radius: 999px;
+  border-radius: 8px;
   padding: 0.4rem 0.9rem;
   border: none;
   font-size: 0.85rem;

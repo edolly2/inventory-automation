@@ -61,7 +61,7 @@ const DashboardPage = () => {
     );
   }
 
-  const { metrics, trends, topProducts } = data;
+  const { metrics, trends, topProducts, orders } = data;
 
   return (
     <div className="page">

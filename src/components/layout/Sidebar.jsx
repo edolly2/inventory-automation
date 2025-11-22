@@ -35,6 +35,14 @@ const Sidebar = () => {
           Inventory
         </NavLink>
         <NavLink
+          to="/orders"
+          className={({ isActive }) =>
+            isActive ? "sidebar-link active" : "sidebar-link"
+          }
+        >
+          Orders
+        </NavLink>
+        <NavLink
           to="/settings"
           className={({ isActive }) =>
             isActive ? "sidebar-link active" : "sidebar-link"
