@@ -24,10 +24,14 @@ export const clientConfigs = {
       totalSkus: 350,
       lowStockCount: 18,
       openOrders: 42,
-      fulfillmentRate: this.orders.length
-        ? this.orders.filter((o) => o.status === "Delivered").length /
-          this.orders.length
-        : 0,
+      // compute fulfillment rate from orders in this mockData object
+      get fulfillmentRate() {
+        const orders = this.orders ?? [];
+        return orders.length
+          ? orders.filter((o) => o.status === "Delivered").length /
+              orders.length
+          : 0;
+      },
       trends: [
         { label: "Mon", value: 120 },
         { label: "Tue", value: 140 },
