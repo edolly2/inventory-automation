@@ -9,6 +9,8 @@ import NotFoundPage from "./pages/NotFoundPage.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import AppLayout from "./components/layout/AppLayout.jsx";
 import OrdersPage from "./pages/OrdersPage.jsx";
+import AccountPage from "./pages/AccountPage.jsx";
+import SalesPage from "./pages/SalesPage.jsx";
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
           <Route path="/inventory" element={<InventoryPage />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/orders" element={<OrdersPage />} />
+          <Route path="/account" element={<AccountPage />} />
+          <Route path="/sales" element={<SalesPage />} />
         </Route>
       </Route>
 

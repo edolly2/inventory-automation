@@ -1,0 +1,10 @@
+/* src/components/layout/Grid.module.css */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--grid-columns),
+    minmax(var(--grid-min-width), 1fr)
+  );
+  gap: var(--grid-gap);
+  width: 100%;
+}

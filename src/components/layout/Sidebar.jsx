@@ -43,12 +43,28 @@ const Sidebar = () => {
           Orders
         </NavLink>
         <NavLink
+          to="/sales"
+          className={({ isActive }) =>
+            isActive ? "sidebar-link active" : "sidebar-link"
+          }
+        >
+          Sales
+        </NavLink>
+        <NavLink
           to="/settings"
           className={({ isActive }) =>
             isActive ? "sidebar-link active" : "sidebar-link"
           }
         >
           Settings
+        </NavLink>
+        <NavLink
+          to="/account"
+          className={({ isActive }) =>
+            isActive ? "sidebar-link active" : "sidebar-link"
+          }
+        >
+          Account
         </NavLink>
       </nav>
     </aside>

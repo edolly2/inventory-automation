@@ -1,0 +1,95 @@
+/* src/components/data/KanbanBoard.module.css */
+.board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.column {
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 0.6rem;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  max-height: 460px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.count {
+  font-size: 0.75rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: #e5e7eb;
+  color: #4b5563;
+}
+
+.list {
+  overflow-y: auto;
+  padding-right: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid #e5e7eb;
+}
+
+.mainLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.primary {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.badge {
+  font-size: 0.65rem;
+  border-radius: 999px;
+  padding: 0.1rem 0.4rem;
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.subtitle {
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.meta {
+  margin-top: 0.3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.metaChip {
+  font-size: 0.65rem;
+  border-radius: 999px;
+  padding: 0.1rem 0.35rem;
+  background: #f3f4f6;
+  color: #4b5563;
+}

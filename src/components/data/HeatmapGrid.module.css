@@ -1,0 +1,55 @@
+/* src/components/data/HeatmapGrid.module.css */
+.wrapper {
+  width: 100%;
+  overflow-x: auto;
+  font-size: 0.75rem;
+}
+
+.headerRow {
+  display: grid;
+  grid-template-columns: 80px repeat(auto-fit, minmax(32px, 1fr));
+  align-items: stretch;
+}
+
+.corner {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.colHeader {
+  padding: 0.3rem 0.2rem;
+  text-align: center;
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 80px repeat(auto-fit, minmax(32px, 1fr));
+}
+
+.rowHeader {
+  padding: 0.25rem 0.3rem;
+  border-bottom: 1px solid #f3f4f6;
+  color: #6b7280;
+}
+
+.cell {
+  position: relative;
+  height: 26px;
+  border-bottom: 1px solid #f3f4f6;
+  border-right: 1px solid #f3f4f6;
+  background: color-mix(in srgb, #2563eb calc(var(--intensity) * 80%), #eff6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value {
+  font-size: 0.7rem;
+  color: #0f172a;
+}

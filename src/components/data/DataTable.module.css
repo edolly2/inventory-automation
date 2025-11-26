@@ -1,0 +1,90 @@
+/* src/components/data/DataTable.module.css */
+.wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  background: #ffffff;
+}
+
+th,
+td {
+  padding: 0.55rem 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  background: #f9fafb;
+}
+
+tbody tr:hover {
+  background: #f3f4f6;
+}
+
+.empty {
+  text-align: center;
+  padding: 1.25rem 0.6rem;
+  color: #9ca3af;
+}
+
+/* More compact rows */
+.dense td,
+.dense th {
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+}
+
+/* Responsive stacked mode */
+.responsive table {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .responsive table thead {
+    display: none;
+  }
+
+  .responsive table,
+  .responsive tbody,
+  .responsive tr,
+  .responsive td {
+    display: block;
+    width: 100%;
+  }
+
+  .responsive tr {
+    margin-bottom: 0.6rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+    background: #ffffff;
+  }
+
+  .responsive td {
+    border-bottom: 1px solid #f3f4f6;
+    padding: 0.5rem 0.7rem;
+  }
+
+  .responsive td:last-child {
+    border-bottom: none;
+  }
+
+  .responsive td::before {
+    content: attr(data-label);
+    display: block;
+    font-weight: 600;
+    font-size: 0.7rem;
+    color: #6b7280;
+    margin-bottom: 0.1rem;
+    text-transform: uppercase;
+  }
+}
