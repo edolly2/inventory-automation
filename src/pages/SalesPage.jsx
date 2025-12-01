@@ -6,6 +6,10 @@ import { LineChartBasic } from "../components/charts/LineChartBasic";
 import { BarChartBasic } from "../components/charts/BarChartBasic";
 import { DonutChartBasic } from "../components/charts/DonutChartBasic";
 import { DataTable } from "../components/data/DataTable";
+import { WidgetRenderer } from "../components/widgets/WidgetRenderer";
+import { clientConfigs } from "../config/clientConfigs.js";
+
+const tenant = import.meta.env.VITE_TENANT || "default";
 
 const salesTrend = [
   { date: "Mon", revenue: 1200 },
@@ -26,12 +30,18 @@ const salesByChannel = [
   { channel: "POS", revenue: 1200 },
 ];
 
-const kpiSparkline = [
-  { t: 1, v: 800 },
-  { t: 2, v: 900 },
-  { t: 3, v: 1000 },
-  { t: 4, v: 950 },
-];
+// const kpiSparkline = [
+//   { t: 1, v: 800 },
+//   { t: 2, v: 900 },
+//   { t: 3, v: 1000 },
+//   { t: 4, v: 950 },
+// ];
+
+// Defensive lookup: tenant may be missing from configs (e.g. local env unset)
+const clientConfig =
+  clientConfigs[tenant] || Object.values(clientConfigs)[0] || {};
+
+const widgets = (clientConfig.pages && clientConfig.pages.sales) || [];
 
 const SalesPage = () => {
   return (
@@ -77,6 +87,12 @@ const SalesPage = () => {
             nameKey="channel"
           />
         </ChartContainer>
+      </Grid>
+
+      <Grid minWidth="300px" gap="1.2rem">
+        {widgets.map((id) => (
+          <WidgetRenderer key={id} widgetId={id} />
+        ))}
       </Grid>
 
       <ChartContainer title="Top Products">

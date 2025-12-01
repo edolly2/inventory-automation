@@ -231,6 +231,51 @@ ul {
   font-size: 1.4rem;
 }
 
+/* ACCOUNT SECTION */
+.account-section-container {
+  display: flex;
+  width: 100%;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.account-section {
+  flex: 1;
+  background: radial-gradient(circle at top, #020617 0, #020617 65%, #020617);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(15, 23, 42, 0.9);
+  box-shadow: var(--shadow-soft);
+}
+
+.account-section-sm {
+  flex: 0.3;
+  margin-right: 0.6rem;
+}
+
+.account-section-sm ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 1.3rem;
+}
+
+.account-section-sm li {
+  cursor: pointer;
+}
+
+.account-section-sm li {
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+}
+.account-section-sm li:hover {
+  color: var(--accent);
+  transform: scale(1.03);
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 0.5rem;
+  /* transition: color var(--transition-fast), transform 0.1s ease-out; */
+}
+
 /* CARDS */
 .card {
   background: radial-gradient(circle at top, #020617 0, #020617 65%, #020617);

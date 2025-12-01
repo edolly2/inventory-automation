@@ -8,9 +8,10 @@ const AppLayout = () => {
     <div className="app-shell">
       <Sidebar />
       <div className="app-main">
+        {/* Topbar now supports tenant switching */}
         <Topbar />
+
         <main className="app-content">
-          {/* Nested route content */}
           <Outlet />
         </main>
       </div>

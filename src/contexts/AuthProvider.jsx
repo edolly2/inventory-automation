@@ -5,29 +5,22 @@ import { fakeLogin, fakeLogout } from "../services/fakeAuthService.js";
 import { AuthContext } from "./AuthContext.jsx";
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-
-  useEffect(() => {
+  // Lazily initialize user from localStorage so we don't call setState inside an effect
+  const [user, setUser] = useState(() => {
     const saved = localStorage.getItem("inventory_auth_user");
-
-    if (saved) {
-      queueMicrotask(() => {
-        try {
-          setUser(JSON.parse(saved));
-        } catch (e) {
-          console.error("Failed to parse saved user", e);
-          localStorage.removeItem("inventory_auth_user");
-        }
-      });
+    if (!saved) return null;
+    try {
+      return JSON.parse(saved);
+    } catch {
+      // If parsing fails remove bad data and continue with null
+      localStorage.removeItem("inventory_auth_user");
+      return null;
     }
+  });
 
-    // Remove loading after microtask settles
-    queueMicrotask(() => {
-      setLoading(false);
-    });
-  }, []);
+  // Use a simple loading flag — lazy init removes the need for initial loading
+  const loading = false;
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {

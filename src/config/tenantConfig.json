@@ -1,0 +1,23 @@
+{
+  "overview": [
+    "overview.todaySales",
+    "overview.ordersToday",
+    "overview.alerts",
+    "overview.salesSpark"
+  ],
+  "sales": [
+    "sales.revenueTrend",
+    "sales.byChannel",
+    "sales.topProducts",
+    "sales.hourlyHeatmap"
+  ],
+  "inventory": [
+    "inventory.list",
+    "inventory.stockHealth",
+    "inventory.velocity"
+  ],
+  "orders": [
+    "orders.kanban",
+    "orders.table"
+  ]
+}

@@ -1,7 +1,7 @@
 // src/components/data/HeatmapGrid.jsx
 import styles from "./HeatmapGrid.module.css";
 
-export const HeatmapGrid = ({ rows, columns, values, getValue, maxValue }) => {
+export const HeatmapGrid = ({ rows, columns, getValue, maxValue }) => {
   // values is a 2D array or flat map; getValue(row, col) -> number
   const localMax =
     typeof maxValue === "number"

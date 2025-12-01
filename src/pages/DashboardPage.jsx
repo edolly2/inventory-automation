@@ -61,7 +61,12 @@ const DashboardPage = () => {
     );
   }
 
-  const { metrics, trends, topProducts /*orders*/ } = data;
+  const { metrics = {}, trends = [], topProducts = [] /*orders*/ } = data || {};
+
+  // Some client configs don't expose a top-level `widgets` array —
+  // fall back to the page definition for the dashboard overview, or an empty list.
+  const widgetsList =
+    clientConfig.widgets ?? clientConfig.pages?.overview ?? [];
 
   return (
     <div className="page">
@@ -74,7 +79,7 @@ const DashboardPage = () => {
 
       {/* Metric cards (config-driven) */}
       <section className="grid grid-4">
-        {clientConfig.widgets.includes("inventorySummary") && (
+        {widgetsList.includes("inventorySummary") && (
           <>
             <MetricCard label="Total SKUs" value={metrics.totalSkus} />
             <MetricCard label="Low Stock Items" value={metrics.lowStockCount} />
@@ -88,7 +93,7 @@ const DashboardPage = () => {
         )}
 
         {/* Different widget for beta-warehouse */}
-        {clientConfig.widgets.includes("warehouseUtilization") && (
+        {widgetsList.includes("warehouseUtilization") && (
           <MetricCard
             label="Warehouse Utilization"
             value="78"
@@ -97,8 +102,8 @@ const DashboardPage = () => {
           />
         )}
 
-        {clientConfig.widgets.includes("orderFulfillment") &&
-          !clientConfig.widgets.includes("inventorySummary") && (
+        {widgetsList.includes("orderFulfillment") &&
+          !widgetsList.includes("inventorySummary") && (
             <MetricCard
               label="Fulfillment Rate"
               value={(metrics.fulfillmentRate * 100).toFixed(1)}
@@ -115,7 +120,7 @@ const DashboardPage = () => {
       )}
 
       {/* Top products table (only for some clients) */}
-      {clientConfig.widgets.includes("topSellingProducts") && topProducts && (
+      {widgetsList.includes("topSellingProducts") && topProducts && (
         <section className="grid grid-1">
           <DataTable
             title="Top Selling Products"

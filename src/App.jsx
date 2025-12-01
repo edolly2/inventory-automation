@@ -1,6 +1,9 @@
 // src/App.jsx
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+
+import { TenantProvider } from "./contexts/TenantContext.jsx";
+
 import LoginPage from "./pages/LoginPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
 import InventoryPage from "./pages/InventoryPage.jsx";
@@ -9,10 +12,10 @@ import NotFoundPage from "./pages/NotFoundPage.jsx";
 import ProtectedRoute from "./routes/ProtectedRoute.jsx";
 import AppLayout from "./components/layout/AppLayout.jsx";
 import OrdersPage from "./pages/OrdersPage.jsx";
-import AccountPage from "./pages/AccountPage.jsx";
+import AccountPage from "./pages/accountPage/AccountPage.jsx";
 import SalesPage from "./pages/SalesPage.jsx";
 
-function App() {
+function AppRoutes() {
   return (
     <Routes>
       {/* Public route */}
@@ -20,7 +23,6 @@ function App() {
 
       {/* Protected section */}
       <Route element={<ProtectedRoute />}>
-        {/* App layout */}
         <Route element={<AppLayout />}>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<DashboardPage />} />
@@ -38,4 +40,10 @@ function App() {
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <TenantProvider>
+      <AppRoutes />
+    </TenantProvider>
+  );
+}
