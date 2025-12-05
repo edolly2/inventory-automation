@@ -14,7 +14,7 @@ export const KpiCard = ({
       type="button"
       className={styles.card}
       onClick={onClick}
-      disabled={!onClick}
+      // disabled={!onClick}
     >
       <span className={styles.label}>{label}</span>
       <span className={styles.value}>{value}</span>

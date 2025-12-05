@@ -44,7 +44,7 @@ export function DraggableWidgetGrid({ pageKey, minWidth = "280px" }) {
           onDrop={handleDrop}
           style={{ opacity: draggingId === id ? 0.4 : 1 }}
         >
-          <WidgetRenderer widgetId={id} />
+          <WidgetRenderer key={id} widgetId={id} />
         </div>
       ))}
     </Grid>

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TenantContext } from "./TenantContext.jsx";
+import { TenantContext } from "./tenantContextObject";
 
 export function useTenantContext() {
   const ctx = useContext(TenantContext);

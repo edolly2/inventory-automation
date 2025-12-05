@@ -17,6 +17,8 @@
   --accent: #38bdf8;
   --accent-soft: rgba(56, 189, 248, 0.1);
   --danger: #f97373;
+  --success: #2de671;
+  --neutral: #69798f;
   --radius-lg: 1rem;
   --radius-md: 0.75rem;
   --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.85);

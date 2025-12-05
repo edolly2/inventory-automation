@@ -1,7 +1,6 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { clientConfigs } from "../config/clientConfigs";
-
-const TenantContext = createContext(null);
+import { TenantContext } from "./tenantContextObject";
 
 export function TenantProvider({ children }) {
   const tenantIds = Object.keys(clientConfigs);

@@ -8,6 +8,7 @@ import { DonutChartBasic } from "../components/charts/DonutChartBasic";
 import { DataTable } from "../components/data/DataTable";
 import { WidgetRenderer } from "../components/widgets/WidgetRenderer";
 import { clientConfigs } from "../config/clientConfigs.js";
+import { DraggableWidgetGrid } from "../components/widgets/DraggableWidgetGrid.jsx";
 
 const tenant = import.meta.env.VITE_TENANT || "default";
 
@@ -17,17 +18,6 @@ const salesTrend = [
   { date: "Wed", revenue: 1600 },
   { date: "Thu", revenue: 2200 },
   { date: "Fri", revenue: 2400 },
-];
-
-const topProducts = [
-  { id: "SKU-1", name: "Widget A", revenue: 3200, units: 80 },
-  { id: "SKU-2", name: "Widget B", revenue: 2600, units: 50 },
-];
-
-const salesByChannel = [
-  { channel: "Shopify", revenue: 5000 },
-  { channel: "Amazon", revenue: 3200 },
-  { channel: "POS", revenue: 1200 },
 ];
 
 // const kpiSparkline = [
@@ -80,22 +70,22 @@ const SalesPage = () => {
           <LineChartBasic data={salesTrend} xKey="date" yKey="revenue" />
         </ChartContainer>
 
-        <ChartContainer title="Sales by Channel">
+        {/* <ChartContainer title="Sales by Channel">
           <DonutChartBasic
             data={salesByChannel}
             valueKey="revenue"
             nameKey="channel"
           />
-        </ChartContainer>
+        </ChartContainer> */}
       </Grid>
 
-      <Grid minWidth="300px" gap="1.2rem">
+      {/* <Grid minWidth="300px" gap="1.2rem">
         {widgets.map((id) => (
           <WidgetRenderer key={id} widgetId={id} />
         ))}
-      </Grid>
+      </Grid> */}
 
-      <ChartContainer title="Top Products">
+      {/* <ChartContainer title="Top Products">
         <DataTable
           columns={[
             { key: "name", header: "Product" },
@@ -105,7 +95,8 @@ const SalesPage = () => {
           data={topProducts}
           keyField="id"
         />
-      </ChartContainer>
+      </ChartContainer> */}
+      <DraggableWidgetGrid pageKey="sales" minWidth="300px" />
     </div>
   );
 };
