@@ -1,6 +1,8 @@
 // src/pages/LoginPage.jsx
 import { useState } from "react";
 import { useAuth } from "../contexts/useAuthHook.jsx";
+import { Link } from "react-router-dom";
+import FormField from "../components/layout/FormField.jsx";
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -38,7 +40,7 @@ const LoginPage = () => {
         {error && <div className="alert alert-error">{error}</div>}
 
         <form onSubmit={handleSubmit} className="auth-form">
-          <label className="form-field">
+          {/* <label className="form-field">
             <span>Email</span>
             <input
               type="email"
@@ -47,7 +49,15 @@ const LoginPage = () => {
               onChange={handleChange}
               required
             />
-          </label>
+          </label> */}
+          <FormField
+            labelText="Email"
+            inputType="email"
+            inputName="email"
+            inputValue={form.email}
+            onInputChange={handleChange}
+            required={true}
+          />
           <label className="form-field">
             <span>Password</span>
             <input
@@ -58,6 +68,9 @@ const LoginPage = () => {
               required
             />
           </label>
+          <small>
+            <Link to="/signup">Don't have account? Signup here</Link>
+          </small>
           <button className="btn btn-primary w-full" disabled={submitting}>
             {submitting ? "Signing in..." : "Sign in"}
           </button>

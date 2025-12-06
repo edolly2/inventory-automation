@@ -5,6 +5,8 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { TenantProvider } from "./contexts/TenantContext.jsx";
 
 import LoginPage from "./pages/LoginPage.jsx";
+import SignupPage from "./pages/SignupPage.jsx";
+
 import DashboardPage from "./pages/DashboardPage.jsx";
 import InventoryPage from "./pages/InventoryPage.jsx";
 import SettingsPage from "./pages/SettingsPage.jsx";
@@ -31,6 +33,7 @@ function AppRoutes() {
     <Routes>
       {/* Public route */}
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
 
       {/* Protected section */}
       <Route element={<ProtectedRoute />}>
