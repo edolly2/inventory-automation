@@ -1,23 +1,26 @@
-const FormField = ({
-  labelText,
-  inputType,
-  inputName,
-  inputValue,
-  onInputChange,
-  required,
-}) => {
+// src/components/layout/FormField.jsx
+export default function FormField({
+  label,
+  type = "text",
+  name,
+  value,
+  onChange,
+  required = false,
+  autoComplete,
+}) {
   return (
     <label className="form-field">
-      <span>{labelText}</span>
+      <span>
+        {label} {required && <span className="required">*</span>}
+      </span>
       <input
-        type={inputType}
-        name={inputName}
-        value={inputValue}
-        onChange={onInputChange}
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
         required={required}
+        autoComplete={autoComplete}
       />
     </label>
   );
-};
-
-export default FormField;
+}

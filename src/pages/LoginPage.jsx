@@ -1,12 +1,21 @@
 // src/pages/LoginPage.jsx
 import { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
 import { useAuth } from "../contexts/useAuthHook.jsx";
-import { Link } from "react-router-dom";
 import FormField from "../components/layout/FormField.jsx";
 
-const LoginPage = () => {
+export default function LoginPage() {
   const { login } = useAuth();
-  const [form, setForm] = useState({ email: "", password: "" });
+  const location = useLocation();
+
+  const params = new URLSearchParams(location.search);
+  const signupSuccess = params.get("signup") === "1";
+
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
+
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
 
@@ -17,16 +26,18 @@ const LoginPage = () => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (submitting) return;
     setSubmitting(true);
     setError("");
 
-    const result = await login(form);
-
-    if (!result.success) {
-      setError(result.message || "Login failed");
+    try {
+      const result = await login(form);
+      if (!result.success) throw new Error();
+    } catch {
+      setError("Login failed. Please check your details.");
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
   }
 
   return (
@@ -34,58 +45,55 @@ const LoginPage = () => {
       <div className="auth-box">
         <h1 className="auth-title">Inventory Automation</h1>
         <p className="auth-subtitle">
-          Multi-client dashboard. Log in with a client user.
+          Multi-client dashboard. Login with your user.
         </p>
+
+        {signupSuccess && (
+          <div className="alert alert-success">
+            Account created successfully. Please login.
+          </div>
+        )}
 
         {error && <div className="alert alert-error">{error}</div>}
 
-        <form onSubmit={handleSubmit} className="auth-form">
-          {/* <label className="form-field">
-            <span>Email</span>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-          </label> */}
+        <form onSubmit={handleSubmit} className="auth-form" noValidate>
           <FormField
-            labelText="Email"
-            inputType="email"
-            inputName="email"
-            inputValue={form.email}
-            onInputChange={handleChange}
-            required={true}
+            label="Email"
+            name="email"
+            type="email"
+            value={form.email}
+            onChange={handleChange}
+            required
+            autoComplete="email"
           />
-          <label className="form-field">
-            <span>Password</span>
-            <input
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
-          </label>
-          <small>
-            <Link to="/signup">Don't have account? Signup here</Link>
-          </small>
-          <button className="btn btn-primary w-full" disabled={submitting}>
-            {submitting ? "Signing in..." : "Sign in"}
-          </button>
-        </form>
 
-        <div className="auth-hint">
-          <p>Demo users:</p>
-          <ul>
-            <li>alice@alpha-shop.com / password123</li>
-            <li>bob@beta-warehouse.com / password123</li>
-          </ul>
-        </div>
+          <FormField
+            label="Password"
+            name="password"
+            type="password"
+            value={form.password}
+            onChange={handleChange}
+            required
+            autoComplete="current-password"
+          />
+
+          <button className="btn btn-primary w-full" disabled={submitting}>
+            {submitting ? "Logging in..." : "Login"}
+          </button>
+
+          <small>
+            <Link to="/signup">Don't have an account? Signup.</Link>
+          </small>
+
+          <div className="auth-hint">
+            <p>Demo users:</p>
+            <ul>
+              <li>alice@alpha-shop.com / password123</li>
+              <li>bob@beta-warehouse.com / password123</li>
+            </ul>
+          </div>
+        </form>
       </div>
     </div>
   );
-};
-
-export default LoginPage;
+}
