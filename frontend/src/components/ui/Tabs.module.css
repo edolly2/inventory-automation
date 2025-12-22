@@ -1,0 +1,64 @@
+@import "../../styles.css";
+
+.tabs {
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1rem;
+}
+
+.list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  position: relative;
+  padding: 0.65rem 0.9rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  transition: color var(--transition-fast), background var(--transition-fast);
+  border: 1px solid transparent;
+  border-bottom: none;
+}
+
+.tab:hover {
+  color: var(--text-main);
+  background: rgba(56, 189, 248, 0.06);
+  border-color: var(--border-subtle);
+  border-bottom-color: transparent;
+}
+
+.active {
+  color: var(--text-main);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--bg-card);
+  box-shadow: 0 -1px 0 var(--bg-card);
+}
+
+.label {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.45rem;
+  height: 1.4rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.meta {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}

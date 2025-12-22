@@ -1,0 +1,33 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Tenant {
+  id          String      @id @default(uuid())
+  name        String
+  createdAt   DateTime    @default(now())
+  users       User[]
+  inventory   Inventory[]
+}
+
+model User {
+  id          String      @id @default(uuid())
+  tenantId    String
+  email       String      @unique
+  password    String
+  createdAt   DateTime    @default(now())
+  tenant      Tenant      @relation(fields: [tenantId], references: [id])
+}
+
+model Inventory {
+  id        String      @id @default(uuid())
+  tenantId  String
+  sku       String
+  quantity  Int
+  createdAt DateTime    @default(now())
+  tenant    Tenant      @relation(fields: [tenantId], references: [id])
+}
